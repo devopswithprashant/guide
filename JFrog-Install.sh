@@ -21,7 +21,8 @@ cd artifactory-oss-7.9.2/app/bin/
 ./artifactory.sh start
 
 
-# [OPTIONAL] : To install specific version of jfrog-artifactory-oss, visit this link to copy the path link of that tar.gz file: https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/
+# [OPTIONAL] : To install specific version of jfrog-artifactory-oss, visit this link to copy the path link of that tar.gz file: 
+# https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/
 # Once you copied the link, then you just need to replace the download link from step no. 4, and all steps will remain same.
 
 
