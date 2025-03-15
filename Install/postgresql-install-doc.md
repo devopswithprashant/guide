@@ -4,26 +4,26 @@
 
 You can install PostgreSQL on Ubuntu by following these steps:
 
-Step 1: Update System Packages
+### Step 1: Update System Packages
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
-Step 2: Install PostgreSQL
+### Step 2: Install PostgreSQL
 
 ```bash
 sudo apt install postgresql postgresql-contrib -y
 ```
 
-Step 3: Start and Enable PostgreSQL Service
+### Step 3: Start and Enable PostgreSQL Service
 
 ```bash
 sudo systemctl start postgresql
 sudo systemctl enable postgresql
 ```
 
-Step 4: Verify Installation
+### Step 4: Verify Installation
 
 Check if PostgreSQL is running:
 
@@ -31,7 +31,7 @@ Check if PostgreSQL is running:
 sudo systemctl status postgresql
 ```
 
-Step 5: Switch to PostgreSQL User and Access PostgreSQL Shell
+### Step 5: Switch to PostgreSQL User and Access PostgreSQL Shell
 
 PostgreSQL creates a default user (postgres). Switch to it:
 
@@ -45,7 +45,7 @@ Then access the PostgreSQL shell:
 psql
 ```
 
-Step 6: Set a Password for the PostgreSQL User
+### Step 6: Set a Password for the PostgreSQL User
 
 Inside the psql prompt, run:
 
@@ -59,7 +59,7 @@ Exit the psql prompt:
 \q
 ```
 
-Step 7: Allow Remote Connections (Optional)
+### Step 7: Allow Remote Connections (Optional)
 
 If you need to allow remote access, edit the configuration files:
 1. Edit postgresql.conf:
@@ -92,7 +92,7 @@ sudo systemctl restart postgresql
 ```
 
 
-Step 8: Enable PostgreSQL on Firewall (If Required)
+### Step 8: Enable PostgreSQL on Firewall (If Required)
 
 ```bash
 sudo ufw allow 5432/tcp
