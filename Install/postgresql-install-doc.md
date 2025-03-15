@@ -6,16 +6,22 @@ You can install PostgreSQL on Ubuntu by following these steps:
 
 Step 1: Update System Packages
 
-sh```sudo apt update && sudo apt upgrade -y```
+```
+sudo apt update && sudo apt upgrade -y
+```
 
 Step 2: Install PostgreSQL
 
+```
 sudo apt install postgresql postgresql-contrib -y
+```
 
 Step 3: Start and Enable PostgreSQL Service
 
+```
 sudo systemctl start postgresql
 sudo systemctl enable postgresql
+```
 
 Step 4: Verify Installation
 
