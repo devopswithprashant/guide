@@ -85,7 +85,7 @@ Add this line to allow remote access:
 host    all             all             0.0.0.0/0               md5
 ```
 
-1. Restart PostgreSQL:
+3. Restart PostgreSQL:
 
 ```bash
 sudo systemctl restart postgresql
