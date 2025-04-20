@@ -61,7 +61,7 @@ sudo systemctl enable nginx
 
 Open your browser and go to:
 
-http://<your-ec2-public-ip>
+http://your-ec2-public-ip
 
 You should see the default Nginx welcome page 🎉
 
