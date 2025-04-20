@@ -9,10 +9,13 @@ Here’s a quick guide to install Nginx and serve its default page on an EC2 ins
 🚀 Step-by-Step Instructions
 
 ✅ 1. Connect to your EC2 instance
-
+```
 ssh -i your-key.pem ec2-user@your-ec2-public-ip
+```
 for Ubuntu:
+```bash
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
+```
 
 
 
@@ -22,23 +25,27 @@ ssh -i your-key.pem ubuntu@your-ec2-public-ip
 
 👉 On Ubuntu:
 
+```bash
 sudo apt update
 sudo apt install -y nginx
+```
 
 👉 On Amazon Linux 2 (AL2):
 
+```bash
 sudo amazon-linux-extras enable nginx1
 sudo yum install -y nginx
-
+```
 
 
 ⸻
 
 ✅ 3. Start and Enable Nginx
 
+```bash
 sudo systemctl start nginx
 sudo systemctl enable nginx
-
+```
 
 
 ⸻
@@ -62,8 +69,9 @@ You should see the default Nginx welcome page 🎉
 
 ✅ 6. (Optional) Check Status
 
+```bash
 sudo systemctl status nginx
-
+```
 
 
 ⸻
