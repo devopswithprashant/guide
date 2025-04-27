@@ -57,15 +57,41 @@ server {
     root /var/www/your-frontend-build;
     index index.html;
 
+    # Client-Side Routing (Critical Fix)
     location / {
         try_files $uri $uri/ /index.html;
     }
 
-    # API Proxy (if needed)
+    # [OPTIONAL] API Proxy (if needed, this can be ignore if CORS setup in backend & doesn't need to proxy the api call)
     location /api {
-        proxy_pass http://localhost:8080;
+        # Remote backend address (update with your actual IP/domain)
+        proxy_pass http://your-remote-backend-ip:8080;
+        
+        # Essential headers for proper routing
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    
+        # Timeouts (adjust based on backend response times)
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+        
+        # Buffering settings
+        proxy_buffering off;
+        proxy_request_buffering off;
+        
+        # CORS headers (if backend doesn't handle them)
+        add_header 'Access-Control-Allow-Origin' "$http_origin" always;
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, PUT, DELETE, OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'Authorization,Content-Type' always;
+    }
+
+    # [Recomended] Static Asset Caching
+    location /static {
+        expires 1y;
+        add_header Cache-Control "public";
     }
 }
 ```
