@@ -29,12 +29,12 @@ Use fdisk to create a new partition:
 sudo fdisk /dev/xvdf
 ```
 Then follow the prompts:
-	1.	Press n → New partition
-	2.	Press p → Primary
-	3.	Press 1 → Partition number
-	4.	Press Enter → Accept default for first sector
-	5.	Press Enter → Accept default for last sector (use full disk)
-	6.	Press w → Write changes and exit
+1. Press n → New partition
+2. Press p → Primary
+3. Press 1 → Partition number
+4. Press Enter → Accept default for first sector
+5. Press Enter → Accept default for last sector (use full disk)
+6. Press w → Write changes and exit
 
 Now run lsblk again, and you’ll see something like:
 ```
