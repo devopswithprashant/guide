@@ -3,6 +3,10 @@
 
 > Prerequisites: you already need to create and attached an EBS volume to your EC2 instance, here’s a step-by-step guide to partition, format, and mount it, so it becomes usable.
 
+1. Mounting a fresh volume
+2. Mounting a volume which was created from backup snapshot.
+
+## Mounting a fresh volume
 ⸻
 
 🔍 Step 1: Identify the new volume
@@ -81,3 +85,75 @@ Use nofail to prevent boot issues if the volume is not available.
 ⸻
 
 ✅ Done! You can now use the volume at /mnt/mydata.
+
+⸻⸻
+
+
+## Mounting a volume which was created from backup snapshot.
+
+> When you create a volume from a snapshot in AWS, it often already contains a partition table and a filesystem (like ext4 or xfs), especially if the snapshot was taken from a previously used volume.
+
+So, you don’t need to partition or format it again—you just need to identify the partition and mount it.
+
+⸻
+
+✅ Steps to Mount a Restored EBS Volume (From Snapshot)
+
+🔍 1. Identify the device
+
+Run:
+```sh
+lsblk
+```
+Example output:
+```
+NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0  10G  0 disk /
+xvdf    202:80   0  20G  0 disk 
+└─xvdf1 202:81   0  20G  0 part  <-- Likely the partition from the snapshot
+```
+If /dev/xvdf1 exists, it’s probably ready to mount.
+
+⸻
+
+🗂️ 2. Mount the partition
+
+Create a mount point (if needed):
+```sh
+sudo mkdir /mnt/restore
+```
+Mount the partition:
+```sh
+sudo mount /dev/xvdf1 /mnt/restore
+```
+Now check:
+```sh
+df -h /mnt/restore
+```
+
+🔄 3: Make it mount automatically on reboot
+
+Edit /etc/fstab:
+```sh
+sudo nano /etc/fstab
+```
+Add this line at the end:
+```
+/dev/xvdf1  /mnt/restore  ext4  defaults,nofail  0  2
+```
+Use nofail to prevent boot issues if the volume is not available.
+
+⸻
+
+✅ Done! You can now use the volume at /mnt/restore.
+
+⸻
+
+❗ If there’s no partition (just the disk)
+
+Sometimes snapshots are made from single-partition volumes (i.e., no partition table). Then you mount the whole device:
+
+sudo mount /dev/xvdf /mnt/restore
+
+If that works and ls /mnt/restore shows content — you’re good.
+
