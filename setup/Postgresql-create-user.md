@@ -116,4 +116,6 @@ Run these while connected to each database where the user owns something.
 DROP USER devuser;
 ```
 
+## Useful links:
+1. [Create DB with set owner](https://stackoverflow.com/questions/53137763/creating-new-database-with-owner-and-password-in-postgresql) 
 
