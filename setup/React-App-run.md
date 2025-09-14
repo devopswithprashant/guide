@@ -45,7 +45,7 @@ scp -r -i ~/.ssh/my-aws-key.pem ./build/ ubuntu@my-ec2-instance.amazonaws.com:/v
 #### **1. Incorrect Server Block Configuration**
 Check your site configuration:
 ```bash
-sudo nano /etc/nginx/sites-available/your-site.conf
+sudo nano /etc/nginx/sites-available/your-site.conf 
 ```
 
 **Sample React App Configuration**:
@@ -54,7 +54,7 @@ server {
     listen 80;
     server_name your-domain.com;
 
-    root /var/www/your-frontend-build;
+    root /var/www/html;
     index index.html;
 
     # Client-Side Routing (Critical Fix)
