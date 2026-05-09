@@ -67,3 +67,12 @@ kubectl get secret argocd-initial-admin-secret -n argocd \
 # Username: admin
 # Password: (output from above command)
 ```
+
+
+
+
+### [Optional] Forcefully remove a stuck app from argoCD
+
+```bash
+kubectl patch app <APP_NAME> -n argocd -p '{"metadata": {"finalizers": null}}' --type merge
+```
