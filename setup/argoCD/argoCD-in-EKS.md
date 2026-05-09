@@ -42,3 +42,35 @@ kubectl patch svc argocd-server -n argocd \
 kubectl get svc argocd-server -n argocd -w
 # Wait until EXTERNAL-IP column shows a hostname instead of <pending>
 ```
+
+
+
+### [OPTIONAL] Delete Applications and ArgoCD
+
+#### Step 1 — Delete ArgoCD Applications first
+Always delete apps before ArgoCD itself, otherwise the finalizers will hang:
+```bash
+# Delete all applications
+kubectl delete application --all -n argocd
+
+# Verify
+kubectl get applications -n argocd
+# Should return: No resources found
+
+#If any app is stuck in Terminating due to finalizers:
+# Remove finalizer manually to force delete
+kubectl patch application my-app-dev -n argocd \
+  -p '{"metadata":{"finalizers":[]}}' \
+  --type merge
+
+# Repeat for each stuck app
+kubectl patch application my-app-qa -n argocd \
+  -p '{"metadata":{"finalizers":[]}}' \
+  --type merge
+```
+
+#### Step 2 — Delete ArgoCD itself
+```bash
+kubectl delete -n argocd -f \
+  https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
