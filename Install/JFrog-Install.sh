@@ -25,3 +25,5 @@ cd artifactory-oss-7.9.2/app/bin/
 # https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/
 # Once you copied the link, then you just need to replace the download link from step no. 4, and all steps will remain same.
 
+# Access Artifactory
+# Open your web browser and go to http://localhost:8082 for those who install on local machine or http://[your-server-ip]:8082 for remote server installations
