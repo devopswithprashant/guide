@@ -230,10 +230,3 @@ Whichever OS you're on, confirm all of the following before moving to the next v
 - [ ] You can run Docker commands without needing to reinstall or restart constantly
 - [ ] (Linux users) you can run `docker ps` without typing `sudo` first
 
----
-
-## What's next
-
-In the next video, we'll run your very first real container together, explore essential CLI commands like `ps`, `exec`, and `logs`, and start building an intuition for the container lifecycle.
-
-> 🙋 **Need help?** Drop a comment on the video with your error message and operating system — I read and respond to every one.
